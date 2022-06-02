@@ -38,6 +38,7 @@ class tennis:
         self.pos_p2 = 350
 
         self.p1_change = 0
+        self.p2_change = 0
 
         signal.signal(signal.SIGINT, multitasking.killall)
 
