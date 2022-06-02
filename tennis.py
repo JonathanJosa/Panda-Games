@@ -97,15 +97,15 @@ class tennis:
             self.dis.fill(self.black)
             self.pos_p1 += self.p1_change
             self.pos_p2 += self.p2_change
-            if pos_p1 <=0:
-                pos_p1 = 0
-            elif pos_p1 >= 700:
-                pos_p1 = 700
+            if self.pos_p1 <=0:
+                self.pos_p1 = 0
+            elif self.pos_p1 >= 700:
+                self.pos_p1 = 700
 
-            if pos_p2 <=0:
-                pos_p2 = 0
-            elif pos_p2 >= 700:
-                pos_p2 = 700
+            if self.pos_p2 <=0:
+                self.pos_p2 = 0
+            elif self.pos_p2 >= 700:
+                self.pos_p2 = 700
 
             self.p1_change = 0
             self.p2_change = 0
