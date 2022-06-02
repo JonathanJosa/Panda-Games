@@ -47,10 +47,11 @@ class tennis:
 
 
     def press(self, n):
-        print("key Pressed")
-        self.stackKeys.append(int(n))
-        self.len_stack += 1
-        self.lastInp = n
+        if self.lastInp != n:
+            print("key Pressed " + str(n))
+            self.stackKeys.append(int(n))
+            self.len_stack += 1
+            self.lastInp = n
 
     def keyPress(self):
         if(self.len_stack == 0):
@@ -58,19 +59,20 @@ class tennis:
             return False
         self.key = self.stackKeys.pop(0)
         self.len_stack -= 1
+        self.lastInp = -1
         return True
 
     def keysControl(self):
         if self.len_stack != 0:
             self.keyPress()
             if self.key == 4:
-                self.p1_change = 1
+                self.p1_change = 15
             elif self.key == 5:
-                self.p1_change = -1
+                self.p1_change = -15
             elif self.key == 8:
-                self.p2_change = -1
+                self.p2_change = -15
             elif self.key == 9:
-                self.p2_change = 1
+                self.p2_change = 15
 
     def Your_score(self):
         return str(self.score_p2) + " - " + str(self.score_p1)
@@ -88,8 +90,8 @@ class tennis:
         self.pos_p2 = 350
         ball_x = 600
         ball_y = 400
-        mov_x = 1
-        mov_y = 1
+        mov_x = 5
+        mov_y = 5
 
         while True:
             self.dis.fill(self.black)
