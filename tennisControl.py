@@ -1,8 +1,17 @@
 import tennis
-import random
+import time
+import RPi.GPIO as GPIO
 
+game_1 = tennis.tennis()
 
-game_2 = tennis.tennis()
+GPIO.setmode(GPIO.BOARD)
+
+pines = [11, 12, 13, 15, 16, 18]
+
+for pin in pines:
+    GPIO.setup(pin, GPIO.IN)
+
 while True:
-    keyPress = random.randint(0,1) + 4
-    game_2.press(4)
+    for i in range(len(pines)):
+        if GPIO.input(pines[i]) == 1:
+            game_1.press(i)
