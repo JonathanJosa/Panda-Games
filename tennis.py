@@ -99,14 +99,14 @@ class tennis:
             self.pos_p2 += self.p2_change
             if pos_p1 <=0:
                 pos_p1 = 0
-            elif pos_p1 >= 1100
-                pos_p1 = 1100
+            elif pos_p1 >= 700:
+                pos_p1 = 700
 
             if pos_p2 <=0:
                 pos_p2 = 0
-            elif pos_p2 >= 1100
-                pos_p2 = 1100
-                
+            elif pos_p2 >= 700:
+                pos_p2 = 700
+
             self.p1_change = 0
             self.p2_change = 0
 
