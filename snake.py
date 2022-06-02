@@ -23,7 +23,7 @@ class snake:
         pygame.display.set_caption('Snake Blocks')
 
         self.clock = pygame.time.Clock()
-
+        self.lastInp = -1
         self.snake_speed = 10
         self.score = 0
 
@@ -43,12 +43,11 @@ class snake:
         self.gameLoop()
 
     def press(self, n):
-        print("key Pressed
-
-
-           ")
-        self.stackKeys.append(int(n))
-        self.len_stack += 1
+        if(n != self.lastInp):
+            print("key Pressed")
+            self.stackKeys.append(int(n))
+            self.len_stack += 1
+            self.lastInp = n
 
     def keyPress(self):
         if(self.len_stack == 0):
@@ -79,10 +78,6 @@ class snake:
     def our_snake(self, snake_list):
         for x in snake_list:
             pygame.draw.rect(self.dis, self.black, [x[0], x[1], 20, 20])
-
-    def message(self, msg, color):
-        mesg = font_style.render(msg, True, color)
-        self.dis.blit(mesg, [self.dis_width / 6, self.dis_height / 3])
 
     @multitasking.task
     def gameLoop(self):
