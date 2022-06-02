@@ -66,9 +66,9 @@ class tennis:
         if self.len_stack != 0:
             self.keyPress()
             if self.key == 4:
-                self.p1_change = 15
-            elif self.key == 5:
                 self.p1_change = -15
+            elif self.key == 5:
+                self.p1_change = 15
             elif self.key == 8:
                 self.p2_change = -15
             elif self.key == 9:
@@ -97,6 +97,16 @@ class tennis:
             self.dis.fill(self.black)
             self.pos_p1 += self.p1_change
             self.pos_p2 += self.p2_change
+            if pos_p1 <=0:
+                pos_p1 = 0
+            elif pos_p1 >= 1100
+                pos_p1 = 1100
+
+            if pos_p2 <=0:
+                pos_p2 = 0
+            elif pos_p2 >= 1100
+                pos_p2 = 1100
+                
             self.p1_change = 0
             self.p2_change = 0
 
@@ -104,9 +114,9 @@ class tennis:
             ball_y += mov_y
 
             if (200 < ball_x < 235 and self.pos_p2 < ball_y < self.pos_p2+100):
-                mov_x = -mov_x
+                mov_x = 5
             if (990 <= ball_x <= 1025 and self.pos_p1 < ball_y < self.pos_p1+100):
-                mov_x = -mov_x
+                mov_x = -5
 
             if (ball_y+10 >= 800 or ball_y-10 <= 0):
                 mov_y = -mov_y
@@ -161,3 +171,7 @@ class tennis:
 
                     pygame.display.update()
                 break
+
+
+        pygame.quit()
+        quit()
