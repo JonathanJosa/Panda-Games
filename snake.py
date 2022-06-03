@@ -8,7 +8,7 @@ class snake:
 
     def __init__(self):
         pygame.init()
-
+        self.activeGame = True
         self.white = (255, 255, 255)
         self.black = (0, 0, 0)
 
@@ -44,6 +44,7 @@ class snake:
             self.stackKeys.append(int(n))
             self.len_stack += 1
             self.lastInp = n
+        return self.activeGame
 
     def keyPress(self):
         if(self.len_stack == 0):
@@ -72,9 +73,9 @@ class snake:
         return self.score
 
     def our_snake(self, snake_list):
-        x = snake_list[0]
+        x = snake_list[-1]
         pygame.draw.rect(self.dis, self.white, [x[0], x[1], 20, 20])
-        for x in snake_list[1:]:
+        for x in snake_list[:-1]:
             pygame.draw.rect(self.dis, self.white, [x[0]+1, x[1]+1, 18, 18])
 
     @multitasking.task
@@ -131,9 +132,13 @@ class snake:
                 self.dis.blit(mes, [400, 150])
                 mes = self.end_font.render("Puntos: "+str(self.score), True, self.white)
                 self.dis.blit(mes, [400, 350])
-                pygame.display.update()
+                mes = self.end_font.render("Presiona para salir...", True, self.white)
+                self.dis.blit(mes, [400, 700])
 
-                time.sleep(3)
+                pygame.display.update()
+                self.activeGame = False
+                while not self.keyPress():
+                    time.sleep(0.1)
                 break
 
 

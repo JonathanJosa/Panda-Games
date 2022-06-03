@@ -9,6 +9,8 @@ class tennis:
     def __init__(self):
         pygame.init()
 
+        self.activeGame = True
+        
         self.white = (255, 255, 255)
         self.black = (0, 0, 0)
 
@@ -52,6 +54,7 @@ class tennis:
             self.stackKeys.append(int(n))
             self.len_stack += 1
             self.lastInp = n
+        return self.activeGame
 
     def keyPress(self):
         if(self.len_stack == 0):
@@ -159,10 +162,13 @@ class tennis:
                 self.dis.blit(mes, [400, 150])
                 mes = self.end_font.render("Ganador: "+winner, True, self.white)
                 self.dis.blit(mes, [400, 350])
+                mes = self.end_font.render("Presiona para salir...", True, self.white)
+                self.dis.blit(mes, [400, 700])
+
                 pygame.display.update()
-
-                time.sleep(3)
-
+                self.activeGame = False
+                while not self.keyPress():
+                    time.sleep(0.1)
                 break
 
         pygame.quit()
