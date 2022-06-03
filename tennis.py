@@ -91,7 +91,7 @@ class tennis:
         ball_x = 600
         ball_y = 400
         mov_x = 5
-        mov_y = 5
+        mov_y = 3
 
         while True:
             self.dis.fill(self.black)
@@ -154,24 +154,16 @@ class tennis:
                 if self.score_p1 > self.score_p2:
                     winner = "Player 1"
 
-                while not quit_game:
-                    self.dis.fill(self.black)
-                    mes = self.end_font.render("Fin del juego", True, self.white)
-                    self.dis.blit(mes, [400, 150])
-                    mes = self.end_font.render("Ganador: "+winner, True, self.white)
-                    self.dis.blit(mes, [400, 350])
-                    mes = self.end_font.render("Press q -> quit | Press c -> restart", True, self.white)
-                    self.dis.blit(mes, [400, 550])
-                    if self.keyPress():
-                        if self.key == 0:
-                            quit_game = True
-                        elif self.key == 1:
-                            quit_game = True
-                            self.gameLoop()
+                self.dis.fill(self.black)
+                mes = self.end_font.render("Fin del juego", True, self.white)
+                self.dis.blit(mes, [400, 150])
+                mes = self.end_font.render("Ganador: "+winner, True, self.white)
+                self.dis.blit(mes, [400, 350])
+                pygame.display.update()
 
-                    pygame.display.update()
+                time.sleep(3)
+
                 break
-
 
         pygame.quit()
         quit()

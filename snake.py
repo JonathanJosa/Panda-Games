@@ -10,11 +10,7 @@ class snake:
         pygame.init()
 
         self.white = (255, 255, 255)
-        self.yellow = (255, 255, 102)
         self.black = (0, 0, 0)
-        self.red = (213, 50, 80)
-        self.green = (0, 255, 0)
-        self.blue = (50, 153, 213)
 
         self.dis_width = 1200
         self.dis_height = 800
@@ -28,7 +24,7 @@ class snake:
         self.score = 0
 
         self.font_style = pygame.font.SysFont("bahnschrift", 25)
-        self.score_font = pygame.font.SysFont("comicsansms", 35)
+        self.end_font = pygame.font.SysFont("comicsansms", 35)
 
         self.stackKeys = []
         self.len_stack = 0
@@ -76,12 +72,13 @@ class snake:
         return self.score
 
     def our_snake(self, snake_list):
-        for x in snake_list:
-            pygame.draw.rect(self.dis, self.black, [x[0], x[1], 20, 20])
+        x = snake_list[0]
+        pygame.draw.rect(self.dis, self.white, [x[0], x[1], 20, 20])
+        for x in snake_list[1:]:
+            pygame.draw.rect(self.dis, self.white, [x[0]+1, x[1]+1, 18, 18])
 
     @multitasking.task
     def gameLoop(self):
-        game_over = False
         game_close = False
 
         x1 = self.dis_width / 2
@@ -93,28 +90,17 @@ class snake:
         foodx = round(random.randrange(0, self.dis_width - 20) / 20.0) * 20.0
         foody = round(random.randrange(0, self.dis_height - 20) / 20.0) * 20.0
 
-        while not game_over:
-
-            while game_close == True:
-                self.dis.fill(self.blue)
-                pygame.display.update()
-
-                for event in pygame.event.get():
-                    if self.keyPress():
-                        if self.key == 0:
-                            game_over = True
-                            game_close = False
-                        if self.key == 1:
-                            self.gameLoop()
-
-
+        while True:
 
             if x1 >= self.dis_width or x1 < 0 or y1 >= self.dis_height or y1 < 0:
                 game_close = True
             x1 += self.x1_change
             y1 += self.y1_change
-            self.dis.fill(self.blue)
-            pygame.draw.rect(self.dis, self.green, [foodx, foody, 20, 20])
+
+            self.dis.fill(self.black)
+            pygame.draw.ellipse(self.dis, self.white, [foodx+2, foody+2, 16, 16])
+            mes = self.font_style.render("Puntos: "+str(self.score), True, self.white)
+            self.dis.blit(mes, [50, 25])
             snake_Head = []
             snake_Head.append(x1)
             snake_Head.append(y1)
@@ -138,6 +124,18 @@ class snake:
                 Length_of_snake += 1
 
             self.clock.tick(self.snake_speed)
+
+            if game_close:
+                self.dis.fill(self.black)
+                mes = self.end_font.render("Fin del juego", True, self.white)
+                self.dis.blit(mes, [400, 150])
+                mes = self.end_font.render("Puntos: "+str(self.score), True, self.white)
+                self.dis.blit(mes, [400, 350])
+                pygame.display.update()
+
+                time.sleep(3)
+                break
+
 
         pygame.quit()
         quit()
