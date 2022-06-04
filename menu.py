@@ -76,7 +76,7 @@ class menu:
     def gameLoop(self):
         self.selected = 0
 
-        img = [pygame.image.load('data/snake.jpg'), pygame.image.load('data/pingpong.png'), pygame.image.load('data/snake.jpg'), pygame.image.load('data/snake.jpg')]
+        img = [pygame.image.load('data/snake.jpg'), pygame.image.load('data/pingpong.png'), pygame.image.load('data/telegram.jpg'), pygame.image.load('data/snake.jpg')]
 
         while self.ended:
             self.dis.fill(self.black)
@@ -91,7 +91,7 @@ class menu:
 
             self.dis.blit(img[0], (160, 160), (60, 0, 180, 480))
             self.dis.blit(img[1], (410, 160), (200, 70, 180, 480))
-            self.dis.blit(img[2], (660, 160), (0, 0, 180, 480))
+            self.dis.blit(img[2], (660, 160), (216, 66, 180, 480))
             self.dis.blit(img[3], (910, 160), (0, 0, 180, 480))
 
             pygame.display.update()
