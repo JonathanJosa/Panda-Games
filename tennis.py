@@ -10,7 +10,7 @@ class tennis:
         pygame.init()
 
         self.activeGame = True
-        
+
         self.white = (255, 255, 255)
         self.black = (0, 0, 0)
 
@@ -26,7 +26,6 @@ class tennis:
         self.score_p2 = 0
 
         self.speed = 15
-
         self.score_style = pygame.font.SysFont("bahnschrift", 25)
         self.end_font = pygame.font.SysFont("comicsansms", 35)
 
