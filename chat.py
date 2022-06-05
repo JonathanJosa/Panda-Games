@@ -67,7 +67,6 @@ def screen(MainWindow):
 
 
 def refreshDataBox():
-    print("refreshed")
     box.setText(''.join([ i+"\n" for i in queue_msg[-30:][::-1] ]))
 
 def detectData(_):
@@ -94,7 +93,7 @@ def interface():
     screen(MainWindow)
     MainWindow.show()
     timer = QtCore.QTimer()
-    timer.setInterval(800)
+    timer.setInterval(300)
     timer.timeout.connect(refreshDataBox)
     timer.start()
     app.exec_()

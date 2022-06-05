@@ -49,7 +49,6 @@ class tennis:
 
     def press(self, n):
         if self.lastInp != n:
-            print("key Pressed " + str(n))
             self.stackKeys.append(int(n))
             self.len_stack += 1
             self.lastInp = n
@@ -92,8 +91,8 @@ class tennis:
         self.pos_p2 = 350
         ball_x = 600
         ball_y = 400
-        mov_x = 5
-        mov_y = 3
+        mov_x = 9
+        mov_y = 6
 
         while True:
             self.dis.fill(self.black)
@@ -116,9 +115,9 @@ class tennis:
             ball_y += mov_y
 
             if (200 < ball_x < 235 and self.pos_p2 < ball_y < self.pos_p2+100):
-                mov_x = 5
+                mov_x = 9
             if (990 <= ball_x <= 1025 and self.pos_p1 < ball_y < self.pos_p1+100):
-                mov_x = -5
+                mov_x = -9
 
             if (ball_y+10 >= 800 or ball_y-10 <= 0):
                 mov_y = -mov_y
@@ -159,7 +158,7 @@ class tennis:
                 self.dis.fill(self.black)
                 mes = self.end_font.render("Fin del juego", True, self.white)
                 self.dis.blit(mes, [400, 150])
-                mes = self.end_font.render("Ganador: "+winner, True, self.white)
+                mes = self.end_font.render("Ganador: " + winner, True, self.white)
                 self.dis.blit(mes, [400, 350])
                 mes = self.end_font.render("Presiona para salir...", True, self.white)
                 self.dis.blit(mes, [400, 700])
@@ -169,6 +168,3 @@ class tennis:
                 while not self.keyPress():
                     time.sleep(0.1)
                 break
-
-        pygame.quit()
-        quit()

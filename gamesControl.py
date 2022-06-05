@@ -8,6 +8,7 @@ import RPi.GPIO as GPIO
 
 def menuControl():
     init = menu.menu()
+    global game
     keep = True
     while keep:
         for i in range(len(pines)):
@@ -35,12 +36,9 @@ def tennis_game():
                     keep = False
 
 def chat_telegram():
-    try:
-        chat.iniciar()
-        chat.interface()
-        raise Exception
-    except Exception:
-        pass
+    chat.iniciar()
+    chat.interface()
+    return
 
 GPIO.setmode(GPIO.BOARD)
 
@@ -55,5 +53,6 @@ while True:
     ([
         lambda _ : snake_game(),
         lambda _ : tennis_game(),
-        lambda _ : chat_telegram()
+        lambda _ : chat_telegram(),
+        lambda _ : snake_game()
     ][game])(True)

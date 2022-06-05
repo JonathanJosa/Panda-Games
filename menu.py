@@ -95,7 +95,6 @@ class menu:
             self.dis.blit(img[3], (910, 160), (0, 0, 180, 480))
 
             pygame.display.update()
+            self.keysControl()
 
         self.activeGame = False
-        pygame.quit()
-        quit()

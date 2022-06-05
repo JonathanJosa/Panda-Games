@@ -30,7 +30,6 @@ class snake:
         self.len_stack = 0
         self.key = 0
 
-
         self.x1_change = 0
         self.y1_change = 0
 
@@ -40,7 +39,6 @@ class snake:
 
     def press(self, n):
         if(n != self.lastInp):
-            print("key Pressed")
             self.stackKeys.append(int(n))
             self.len_stack += 1
             self.lastInp = n
@@ -140,7 +138,3 @@ class snake:
                 while not self.keyPress():
                     time.sleep(0.1)
                 break
-
-
-        pygame.quit()
-        quit()
