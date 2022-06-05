@@ -13,9 +13,9 @@ def menuControl():
     while keep:
         for i in range(len(pines)):
             if GPIO.input(pines[i]) == 1:
-                game = init.select()
                 if not init.press(i):
                     keep = False
+                game = init.select()
 
 def snake_game():
     init = snake.snake()

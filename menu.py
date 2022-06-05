@@ -69,7 +69,7 @@ class menu:
             elif self.key == 1:
                 self.ended = False
 
-    def selec():
+    def select():
         return self.selected
 
     @multitasking.task
