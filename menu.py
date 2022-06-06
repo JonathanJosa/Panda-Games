@@ -41,7 +41,6 @@ class menu:
 
     def press(self, n):
         if self.lastInp != n:
-            print("key Pressed " + str(n))
             self.stackKeys.append(int(n))
             self.len_stack += 1
             self.lastInp = n
