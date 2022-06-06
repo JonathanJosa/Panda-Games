@@ -16,6 +16,8 @@ class obj:
         self.white = (255, 255, 255)
         self.black = (0, 0, 0)
 
+        self.keep = True
+
         self.loop()
 
 
@@ -23,11 +25,11 @@ class obj:
         val = ""
         px = 400
         py = 400
-        while True:
+        while self.keep:
             self.dis.fill(self.black)
             for e in pygame.event.get():
                 if e.type == KEYDOWN and e.key == K_ESCAPE:
-                    sys.exit()
+                    self.keep = False
 
             x = self.con.read()
             if x == "b''":

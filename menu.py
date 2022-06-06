@@ -9,7 +9,7 @@ class menu:
     def __init__(self):
         pygame.init()
 
-        self.games = ["Snake", "Tennis", "Telegram", "Nothing....Yet"]
+        self.games = ["Snake", "Tennis", "Telegram", "Telequinesis"]
 
         self.activeGame = True
 

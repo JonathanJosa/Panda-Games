@@ -42,7 +42,10 @@ def chat_telegram():
     return
 
 def magicControl():
-    object.obj()
+    try:
+        object.obj()
+    except:
+        print("Error init serial connection to arduino on: ttyACM0")
 
 GPIO.setmode(GPIO.BOARD)
 
