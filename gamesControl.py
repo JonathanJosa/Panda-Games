@@ -1,6 +1,7 @@
 import tennis
 import snake
 import chat
+import object
 import menu
 import pygame
 import time
@@ -40,6 +41,9 @@ def chat_telegram():
     chat.interface()
     return
 
+def magicControl():
+    object.obj()
+
 GPIO.setmode(GPIO.BOARD)
 
 pines = [11, 12, 13, 15, 16, 18, 19, 21, 22, 23]
@@ -54,5 +58,5 @@ while True:
         lambda _ : snake_game(),
         lambda _ : tennis_game(),
         lambda _ : chat_telegram(),
-        lambda _ : snake_game()
+        lambda _ : magicControl()
     ][game])(True)
